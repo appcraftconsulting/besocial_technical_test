@@ -7,6 +7,7 @@
 
 import Foundation
 import BeSocialEntity
+import UIKit
 
 class StoriesCarouselFullScreenViewModel: ObservableObject {
     @Published internal var content: Content = .loader
@@ -22,11 +23,11 @@ class StoriesCarouselFullScreenViewModel: ObservableObject {
     
     private let userDefaults: UserDefaults = .standard
     private let stories: [Story]
-    private let pageDuration: TimeInterval = 3
+    private let pageDuration: TimeInterval = 5
     
     internal init(stories: [Story], from story: Story?) {
         self.stories = stories
-        
+
         userDefaults.publisher(for: \.seenStoriesPagesIds)
             .assign(to: &$seenStoriesPagesIds)
         
@@ -40,7 +41,7 @@ class StoriesCarouselFullScreenViewModel: ObservableObject {
             return 0
         }
         
-        return max(min(nextPageTimer.fireDate.timeIntervalSinceNow / pageDuration, 1), 0)
+        return 1 - max(min(nextPageTimer.fireDate.timeIntervalSinceNow / pageDuration, 1), 0)
     }
     
     // MARK: - Internal functions
@@ -91,6 +92,10 @@ class StoriesCarouselFullScreenViewModel: ObservableObject {
         }
         
         scheduleNextPageTimer()
+    }
+    
+    internal func close() {
+        shouldDismiss = true
     }
     
     // MARK: - Private functions

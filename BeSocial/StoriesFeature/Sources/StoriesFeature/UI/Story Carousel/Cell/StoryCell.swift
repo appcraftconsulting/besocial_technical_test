@@ -18,10 +18,10 @@ struct StoryCell: View {
         VStack(alignment: .center, spacing: 6) {
             AsyncImage(url: viewModel.authorProfilePictureURL) { image in
                 image.resizable()
-                    .clipShape(.circle)
             } placeholder: {
-                ProgressView()
+                Color.purple
             }
+            .clipShape(.circle)
             .aspectRatio(1, contentMode: .fit)
             .overlay {
                 Group {
@@ -37,9 +37,10 @@ struct StoryCell: View {
             }
             
             Text(viewModel.authorDisplayName)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(.primary)
                 .lineLimit(1)
                 .font(.system(size: 12, weight: .medium))
         }
+        .opacity(viewModel.hasSeenAllPages ? 0.6 : 1.0)
     }
 }

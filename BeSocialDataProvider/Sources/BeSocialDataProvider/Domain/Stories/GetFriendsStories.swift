@@ -111,7 +111,7 @@ extension GetFriendsStories {
                         profilePictureURL: URL(string: "https://i.pravatar.cc/300?u=\(storyIndex)")!,
                         createdAt: .now
                     ),
-                    pages: createdAtDates.enumerated().map { (pageIndex, createdAt) in
+                    pages: createdAtDates.sorted().enumerated().map { (pageIndex, createdAt) in
                         .init(
                             id: "\(storyIndex)_\(pageIndex)",
                             contentType: .image,

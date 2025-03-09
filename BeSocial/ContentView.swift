@@ -14,7 +14,7 @@ struct ContentView: View {
     private let friendsStoriesFetcher = StoriesGatewayFactory.shared.makeFriendsStoriesFetcher()
     
     var body: some View {
-        Color.orange
+        Color.accentColor.opacity(0.1)
             .overlay {
                 ResetSeenStoriesPagesButton()
             }

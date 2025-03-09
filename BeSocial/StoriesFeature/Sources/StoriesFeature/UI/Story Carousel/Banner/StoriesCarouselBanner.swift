@@ -31,7 +31,7 @@ public struct StoriesCarouselBanner: View {
                             .buttonStyle(.plain)
                         case .placeholder:
                             Circle()
-                                .fill(.secondary)
+                                .fill(.tertiary)
                                 .aspectRatio(1, contentMode: .fit)
                         case let .pagination(nextStoryId):
                             Circle()
@@ -45,8 +45,7 @@ public struct StoriesCarouselBanner: View {
                     .frame(width: 72)
                 }
             }
-            .padding(.vertical, 8)
-            .padding(.horizontal, 16)
+            .padding(16)
             .background(.background)
             .animation(.default, value: viewModel.cells)
             .onAppear {

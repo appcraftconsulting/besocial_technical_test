@@ -10,6 +10,16 @@
           }
         }
       }
+    },
+    "stories_carousel_full_screen_close_button_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
