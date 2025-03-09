@@ -15,6 +15,9 @@ struct ContentView: View {
     
     var body: some View {
         Color.orange
+            .overlay {
+                ResetSeenStoriesPagesButton()
+            }
             .safeAreaInset(edge: .top, spacing: .zero) {
                 StoriesCarouselBanner(
                     viewModel: .init(friendsStoriesFetcher: friendsStoriesFetcher)

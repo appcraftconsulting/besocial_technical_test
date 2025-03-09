@@ -13,14 +13,16 @@ class StoryCellViewModel: ObservableObject {
     
     private let userDefaults: UserDefaults = .standard
     
-    internal var authorProfilePictureURL: URL
-    
+    internal let authorProfilePictureURL: URL
+    internal let authorDisplayName: String
+
     internal init(story: Story) {
         authorProfilePictureURL = story.authorProfilePictureURL
+        authorDisplayName = story.authorDisplayName
         userDefaults.publisher(for: \.seenStoriesPagesIds)
             .map { seenStoriesPagesIds in
                 story.pages.allSatisfy { page in
-                    (seenStoriesPagesIds ?? []).contains(page.id)
+                    seenStoriesPagesIds.contains(page.id)
                 }
             }
             .assign(to: &$hasSeenAllPages)

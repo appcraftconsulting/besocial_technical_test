@@ -18,7 +18,7 @@ public struct StoriesCarouselBanner: View {
     
     public var body: some View {
         ScrollView(.horizontal) {
-            HStack(spacing: 16) {
+            HStack(alignment: .top, spacing: 20) {
                 ForEach(viewModel.cells) { cell in
                     Group {
                         switch cell {
@@ -28,21 +28,23 @@ public struct StoriesCarouselBanner: View {
                             } label: {
                                 StoryCell(viewModel: .init(story: story))
                             }
+                            .buttonStyle(.plain)
                         case .placeholder:
                             Circle()
                                 .fill(.secondary)
+                                .aspectRatio(1, contentMode: .fit)
                         case let .pagination(nextStoryId):
                             Circle()
                                 .fill(.green) // should be clear
+                                .aspectRatio(1, contentMode: .fit)
                                 .onAppear {
                                     viewModel.fetchStories(from: nextStoryId)
                                 }
                         }
                     }
-                    .frame(width: 72, height: 72)
+                    .frame(width: 72)
                 }
             }
-            .scrollIndicators(.hidden)
             .padding(.vertical, 8)
             .padding(.horizontal, 16)
             .background(.background)
@@ -51,6 +53,7 @@ public struct StoriesCarouselBanner: View {
                 viewModel.fetchStories()
             }
         }
+        .scrollIndicators(.hidden)
         .fullScreenCover(item: $selectedStory) { story in
             StoriesCarouselFullScreen(viewModel: StoriesCarouselFullScreenViewModel(
                 stories: viewModel.retrieveStories(),
