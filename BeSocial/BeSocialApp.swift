@@ -1,6 +1,6 @@
 //
-//  SocialStoriesApp.swift
-//  SocialStories
+//  BeSocialApp.swift
+//  BeSocial
 //
 //  Created by François Boulais on 08/03/2025.
 //
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct SocialStoriesApp: App {
+struct BeSocialApp: App {    
     var body: some Scene {
         WindowGroup {
             ContentView()

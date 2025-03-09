@@ -6,51 +6,98 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXFileReference section */
-		8EB326462D7CD514001E7C14 /* SocialStories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialStories.app; sourceTree = BUILT_PRODUCTS_DIR; };
-/* End PBXFileReference section */
+/* Begin PBXBuildFile section */
+		8E538F002D7CE351009094AF /* BeSocialEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 8E538EFF2D7CE351009094AF /* BeSocialEntity */; };
+		8E538F022D7CE351009094AF /* StoriesFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 8E538F012D7CE351009094AF /* StoriesFeature */; };
+		8E538F072D7CE391009094AF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB326862D7CDE9B001E7C14 /* ContentView.swift */; };
+		8E538F082D7CE391009094AF /* BeSocialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB326882D7CDE9B001E7C14 /* BeSocialApp.swift */; };
+		8E538F092D7CE3CE009094AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EB326852D7CDE9B001E7C14 /* Assets.xcassets */; };
+		8E538F0F2D7CECCA009094AF /* BeSocialEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 8E538F0E2D7CECCA009094AF /* BeSocialEntity */; };
+		8E538F152D7CED07009094AF /* BeSocialRepositories in Frameworks */ = {isa = PBXBuildFile; productRef = 8E538F142D7CED07009094AF /* BeSocialRepositories */; };
+/* End PBXBuildFile section */
 
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		8EB326482D7CD514001E7C14 /* SocialStories */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = SocialStories;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
+/* Begin PBXFileReference section */
+		8E538F162D7CED64009094AF /* StoriesFeature */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = StoriesFeature; sourceTree = "<group>"; };
+		8E538F172D7CEDA5009094AF /* BeSocialDataProvider */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = BeSocialDataProvider; sourceTree = "<group>"; };
+		8E538F192D7CEDA5009094AF /* BeSocialRepositories */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = BeSocialRepositories; sourceTree = "<group>"; };
+		8E538F1A2D7CEDF8009094AF /* BeSocialEntity */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = BeSocialEntity; sourceTree = "<group>"; };
+		8EB326462D7CD514001E7C14 /* BeSocial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeSocial.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EB326802D7CDE9B001E7C14 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8EB326852D7CDE9B001E7C14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8EB326862D7CDE9B001E7C14 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8EB326872D7CDE9B001E7C14 /* BeSocial.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BeSocial.entitlements; sourceTree = "<group>"; };
+		8EB326882D7CDE9B001E7C14 /* BeSocialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeSocialApp.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		8EB326432D7CD514001E7C14 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E538F0F2D7CECCA009094AF /* BeSocialEntity in Frameworks */,
+				8E538F152D7CED07009094AF /* BeSocialRepositories in Frameworks */,
+				8E538F002D7CE351009094AF /* BeSocialEntity in Frameworks */,
+				8E538F022D7CE351009094AF /* StoriesFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E538EFE2D7CE351009094AF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8EB3263D2D7CD514001E7C14 = {
 			isa = PBXGroup;
 			children = (
-				8EB326482D7CD514001E7C14 /* SocialStories */,
+				8E538F1A2D7CEDF8009094AF /* BeSocialEntity */,
+				8E538F172D7CEDA5009094AF /* BeSocialDataProvider */,
+				8E538F192D7CEDA5009094AF /* BeSocialRepositories */,
 				8EB326472D7CD514001E7C14 /* Products */,
+				8EB326892D7CDE9B001E7C14 /* BeSocial */,
+				8E538EFE2D7CE351009094AF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		8EB326472D7CD514001E7C14 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8EB326462D7CD514001E7C14 /* SocialStories.app */,
+				8EB326462D7CD514001E7C14 /* BeSocial.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		8EB326812D7CDE9B001E7C14 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				8EB326802D7CDE9B001E7C14 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8EB326892D7CDE9B001E7C14 /* BeSocial */ = {
+			isa = PBXGroup;
+			children = (
+				8E538F162D7CED64009094AF /* StoriesFeature */,
+				8EB326812D7CDE9B001E7C14 /* Preview Content */,
+				8EB326852D7CDE9B001E7C14 /* Assets.xcassets */,
+				8EB326862D7CDE9B001E7C14 /* ContentView.swift */,
+				8EB326872D7CDE9B001E7C14 /* BeSocial.entitlements */,
+				8EB326882D7CDE9B001E7C14 /* BeSocialApp.swift */,
+			);
+			path = BeSocial;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8EB326452D7CD514001E7C14 /* SocialStories */ = {
+		8EB326452D7CD514001E7C14 /* BeSocial */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8EB326552D7CD516001E7C14 /* Build configuration list for PBXNativeTarget "SocialStories" */;
+			buildConfigurationList = 8EB326552D7CD516001E7C14 /* Build configuration list for PBXNativeTarget "BeSocial" */;
 			buildPhases = (
 				8EB326422D7CD514001E7C14 /* Sources */,
 				8EB326432D7CD514001E7C14 /* Frameworks */,
@@ -60,14 +107,15 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				8EB326482D7CD514001E7C14 /* SocialStories */,
-			);
-			name = SocialStories;
+			name = BeSocial;
 			packageProductDependencies = (
+				8E538EFF2D7CE351009094AF /* BeSocialEntity */,
+				8E538F012D7CE351009094AF /* StoriesFeature */,
+				8E538F0E2D7CECCA009094AF /* BeSocialEntity */,
+				8E538F142D7CED07009094AF /* BeSocialRepositories */,
 			);
 			productName = SocialStories;
-			productReference = 8EB326462D7CD514001E7C14 /* SocialStories.app */;
+			productReference = 8EB326462D7CD514001E7C14 /* BeSocial.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -85,7 +133,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8EB326412D7CD514001E7C14 /* Build configuration list for PBXProject "SocialStories" */;
+			buildConfigurationList = 8EB326412D7CD514001E7C14 /* Build configuration list for PBXProject "BeSocial" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -94,12 +142,14 @@
 			);
 			mainGroup = 8EB3263D2D7CD514001E7C14;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 8EB326472D7CD514001E7C14 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8EB326452D7CD514001E7C14 /* SocialStories */,
+				8EB326452D7CD514001E7C14 /* BeSocial */,
 			);
 		};
 /* End PBXProject section */
@@ -109,6 +159,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E538F092D7CE3CE009094AF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +170,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E538F072D7CE391009094AF /* ContentView.swift in Sources */,
+				8E538F082D7CE391009094AF /* BeSocialApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,14 +297,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = SocialStories/SocialStories.entitlements;
+				CODE_SIGN_ENTITLEMENTS = BeSocial/BeSocial.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SocialStories/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"BeSocial/Preview Content\"";
 				DEVELOPMENT_TEAM = 847SAZNUNF;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = BeSocial;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -260,20 +314,21 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.appcraftconsulting.SocialStories;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appcraftconsulting.besocial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 1;
 				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Debug;
@@ -283,14 +338,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = SocialStories/SocialStories.entitlements;
+				CODE_SIGN_ENTITLEMENTS = BeSocial/BeSocial.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SocialStories/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"BeSocial/Preview Content\"";
 				DEVELOPMENT_TEAM = 847SAZNUNF;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = BeSocial;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -299,20 +355,21 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.appcraftconsulting.SocialStories;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appcraftconsulting.besocial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 1;
 				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Release;
@@ -320,7 +377,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8EB326412D7CD514001E7C14 /* Build configuration list for PBXProject "SocialStories" */ = {
+		8EB326412D7CD514001E7C14 /* Build configuration list for PBXProject "BeSocial" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8EB326532D7CD516001E7C14 /* Debug */,
@@ -329,7 +386,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8EB326552D7CD516001E7C14 /* Build configuration list for PBXNativeTarget "SocialStories" */ = {
+		8EB326552D7CD516001E7C14 /* Build configuration list for PBXNativeTarget "BeSocial" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8EB326562D7CD516001E7C14 /* Debug */,
@@ -339,6 +396,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8E538EFF2D7CE351009094AF /* BeSocialEntity */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BeSocialEntity;
+		};
+		8E538F012D7CE351009094AF /* StoriesFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = StoriesFeature;
+		};
+		8E538F0E2D7CECCA009094AF /* BeSocialEntity */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BeSocialEntity;
+		};
+		8E538F142D7CED07009094AF /* BeSocialRepositories */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BeSocialRepositories;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8EB3263E2D7CD514001E7C14 /* Project object */;
 }
