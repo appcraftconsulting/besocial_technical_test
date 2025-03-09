@@ -1,7 +1,19 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "publish date (todo)" : {
 
+    },
+    "reset_seen_stories_pages_button_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset Seen Stories"
+          }
+        }
+      }
+    }
   },
   "version" : "1.0"
 }
