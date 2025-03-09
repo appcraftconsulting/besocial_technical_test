@@ -51,7 +51,7 @@ extension GetFriendsStories {
             let slice = Array(stories[startIndex..<endIndex])
             let nextStoryId = endIndex + 1 < stories.endIndex ? stories[endIndex + 1].id : nil
             
-            try? await Task.sleep(nanoseconds: 1_000_000_000)
+            try? await Task.sleep(nanoseconds: 2_000_000_000)
             
             return .init(
                 data: .init(stories: slice),
