@@ -1,5 +1,8 @@
 # BeSocial: Technical Test for BeReal
 
+> [!NOTE]  
+> I've continued to have fun with this project here: [this branch](https://github.com/appcraftconsulting/besocial_technical_test/tree/extra/bug_fixes_and_improvements)!
+> 
 Thanks for taking the time to review my work! 😀
 
 As requested, here is the source code of a "Instagram Stories-like" feature nested in a sample app.
@@ -10,11 +13,13 @@ I've chosen to modularize my code into 4 packages:
 - 📦 **BeSocialRepositories** : This framework add feature implementations using data provider functions and local adapters to parse DTOs to common entities.
 
 I've chosen this architecture because it's one I've often worked with, pretty simple to use, ease to read, and ready to be tested!
+
 By splitting code into functional areas, we ensure keeping small files, with separation of concerns.
 
 ## How I spent my time?
 Actually things gone bad when I started the project:
 After ~30 minutes writing code, I've noticed packages were not added in the project directory, so I decided to move them back to it from Finder 🤦🏻‍♂️
+
 This caused to broke the entire project, even after cleaning & deleting derived data, Xcode still refused to compile the project.
 I had to select manually all compile sources & bundle resources to restore it.
 - 2h30+ on architecture
@@ -38,10 +43,9 @@ I had to select manually all compile sources & bundle resources to restore it.
 - Replacing current broken drag gestures by tabview or `ScrollView` + `SrollViewBehavior` to add paging effect
 - Add tap gesture to both edges of the story view to navigate between story pages.
 ### Mark as Seen feature
-I've chosen the quickest way to implement mark as seen feature using UserDefaults, but after thinking about it, I'm pretty sure it should also be done with BeSocial API so the author can see the list of users who have seen the story.
+I've chosen the quickest way to implement "Mark as Seen" feature using `UserDefaults`, but after thinking about it, I'm pretty sure it should also be done with _BeSocial API_ so the author can see the list of users who have seen the story.
 ### Other
 - Use smart async image framework instead of native `AsyncImage` component (eg: [Nuke](https://github.com/kean/Nuke))
 - Add Haptics Feedback while navigating through stories.
-
-> [!NOTE]  
-> I'll continue to work on the project tonight on [this branch](https://github.com/appcraftconsulting/besocial_technical_test.git)!
+- Improve accessibility by adding custom labels & groups
+- Add button and interactive gesture to close stories
