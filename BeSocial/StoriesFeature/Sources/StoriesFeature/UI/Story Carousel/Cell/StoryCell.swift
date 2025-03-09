@@ -42,5 +42,6 @@ struct StoryCell: View {
                 .font(.system(size: 12, weight: .medium))
         }
         .opacity(viewModel.hasSeenAllPages ? 0.6 : 1.0)
+        .animation(.easeInOut, value: viewModel.hasSeenAllPages)
     }
 }
