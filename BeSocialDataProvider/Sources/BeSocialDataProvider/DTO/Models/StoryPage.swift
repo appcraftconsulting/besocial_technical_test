@@ -16,6 +16,7 @@ public extension DTO.Stories {
         public let id: String
         public let contentType: ContentType
         public let contentURL: URL
+        public let createdAt: Date
         
         public var isLiked: Bool = false
     }

@@ -24,6 +24,8 @@ extension GetFriendsStories {
         private let fileManager: FileManager
         private let jsonDecoder: JSONDecoder
         private let jsonEncoder: JSONEncoder
+        private let calendar: Calendar
+        
         private var fileName = "stories.json"
 
         private var generatedStories = [DTO.Stories.Story]()
@@ -31,11 +33,13 @@ extension GetFriendsStories {
         init(
             fileManager: FileManager = .default,
             jsonDecoder: JSONDecoder = .init(),
-            jsonEncoder: JSONEncoder = .init()
+            jsonEncoder: JSONEncoder = .init(),
+            calendar: Calendar = .autoupdatingCurrent
         ) {
             self.fileManager = fileManager
             self.jsonDecoder = jsonDecoder
             self.jsonEncoder = jsonEncoder
+            self.calendar = calendar
         }
         
         // MARK: - GetFriendsStoriesEndpoint
@@ -91,7 +95,14 @@ extension GetFriendsStories {
             let allDisplayNames = ["Neo", "Trinity", "Morpheus", "Smith", "Oracle", "Cypher", "Niobe", "Dozer", "Switch", "Tank", "Seraph", "Sati", "Merovingian", "Persephone", "Ghost", "Lock", "Rama", "Bane", "The Keymaker", "Commander Thadeus", "Kid", "Zee", "Mifune", "Roland", "Cas", "Colt", "Vector", "Sequoia", "Sentinel", "Turing"]
             
             return allDisplayNames.enumerated().map { (storyIndex, displayName) in
-                let numberOfStories: Int = .random(in: 1..<4)
+                let numberOfPages: Int = .random(in: 1..<4)
+                let yesterday = calendar.date(byAdding: .day, value: -1, to: .now)
+                let startOfYesterday = calendar.startOfDay(for: yesterday!)
+                let createdAtDates: [Date] = (0..<numberOfPages).map { _ in
+                    let timestamp: TimeInterval = .random(in: startOfYesterday.timeIntervalSinceNow...0)
+                    return .init(timeIntervalSinceNow: timestamp)
+                }
+                
                 return .init(
                     id: String(storyIndex),
                     author: .init(
@@ -100,11 +111,12 @@ extension GetFriendsStories {
                         profilePictureURL: URL(string: "https://i.pravatar.cc/300?u=\(storyIndex)")!,
                         createdAt: .now
                     ),
-                    pages: (0..<numberOfStories).map { index in
+                    pages: createdAtDates.enumerated().map { (pageIndex, createdAt) in
                         .init(
-                            id: "\(storyIndex)_\(index)",
+                            id: "\(storyIndex)_\(pageIndex)",
                             contentType: .image,
-                            contentURL: URL(string: imagesURLs.randomElement()!)!
+                            contentURL: URL(string: imagesURLs.randomElement()!)!,
+                            createdAt: createdAt
                         )
                     }
                 )

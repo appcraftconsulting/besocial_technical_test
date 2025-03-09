@@ -16,7 +16,7 @@ public struct ResetSeenStoriesPagesButton: View {
         Button {
             UserDefaults.standard.seenStoriesPagesIds = []
         } label: {
-            Text("reset_seen_stories_pages_button_title")
+            Text("reset_seen_stories_pages_button_title", bundle: .module)
         }
     }
 }

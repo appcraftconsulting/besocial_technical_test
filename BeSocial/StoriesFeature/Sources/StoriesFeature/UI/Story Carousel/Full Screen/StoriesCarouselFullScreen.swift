@@ -28,7 +28,7 @@ struct StoriesCarouselFullScreen: View {
                         Text(story.authorDisplayName)
                             .font(.headline)
                         
-                        Text("publish date (todo)")
+                        Text(story.pages[pageIndex].createdAt, style: .relative)
                             .font(.caption)
                         
                         HStack(spacing: 16) {

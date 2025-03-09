@@ -26,6 +26,7 @@ final class StoryPageAdapter: StoryPageAdaptable {
                 }
             }(),
             contentURL: storyPage.contentURL,
+            createdAt: storyPage.createdAt,
             isLiked: storyPage.isLiked
         )
     }

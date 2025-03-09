@@ -16,17 +16,20 @@ public struct StoryPage: Identifiable, Equatable, Sendable {
         id: String,
         contentType: ContentType,
         contentURL: URL,
+        createdAt: Date,
         isLiked: Bool
     ) {
         self.id = id
         self.contentType = contentType
         self.contentURL = contentURL
+        self.createdAt = createdAt
         self.isLiked = isLiked
     }
     
     public let id: String
     public let contentType: ContentType
     public let contentURL: URL
+    public let createdAt: Date
     
     public var isLiked: Bool = false
 }
