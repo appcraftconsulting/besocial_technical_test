@@ -24,7 +24,7 @@ struct StoriesCarouselFullScreen: View {
                     .tint(.white)
             case let .story(story, pageIndex):
                 VStack(spacing: 8) {
-                    HStack(spacing: 16) {
+                    HStack(spacing: 8) {
                         ForEach(story.pages.indices, id: \.self) { index in
                             if index == pageIndex {
                                 TimelineView(.animation) { _ in
@@ -37,6 +37,7 @@ struct StoriesCarouselFullScreen: View {
                             }
                         }
                     }
+                    .progressViewStyle(.linear)
                     
                     HStack(alignment: .center) {
                         VStack(alignment: .leading) {
@@ -73,6 +74,7 @@ struct StoriesCarouselFullScreen: View {
                         } placeholder: {
                             ProgressView()
                         }
+                        .frame(width: proxy.size.width, height: proxy.size.height)
                         .onTapGesture { location in
                             if location.x > proxy.frame(in: .local).midX {
                                 viewModel.nextPage()
@@ -86,6 +88,7 @@ struct StoriesCarouselFullScreen: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .clipShape(.rect(cornerRadius: 16, style: .continuous))
         .background(.black)
         .onChange(of: viewModel.shouldDismiss) { _ in
             dismiss()
