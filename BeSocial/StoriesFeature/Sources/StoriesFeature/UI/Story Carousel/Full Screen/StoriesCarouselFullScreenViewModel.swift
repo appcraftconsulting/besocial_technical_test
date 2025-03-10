@@ -7,7 +7,7 @@
 
 import Foundation
 import BeSocialEntity
-import UIKit
+import SwiftUI
 
 class StoriesCarouselFullScreenViewModel: ObservableObject {
     struct CarouselTab: Identifiable {
@@ -60,7 +60,9 @@ class StoriesCarouselFullScreenViewModel: ObservableObject {
     internal func previousStory() {
         if let selectedTabIndex = tabs.firstIndex(where: { $0.story.id == selectedStoryId }),
            tabs.indices.contains(selectedTabIndex - 1) {
-            selectedStoryId = tabs[selectedTabIndex - 1].story.id
+            withAnimation {
+                selectedStoryId = tabs[selectedTabIndex - 1].story.id
+            }
         } else {
             shouldDismiss = true
         }
@@ -69,7 +71,9 @@ class StoriesCarouselFullScreenViewModel: ObservableObject {
     internal func nextStory() {
         if let selectedTabIndex = tabs.firstIndex(where: { $0.story.id == selectedStoryId }),
            tabs.indices.contains(selectedTabIndex + 1) {
-            selectedStoryId = tabs[selectedTabIndex + 1].story.id
+            withAnimation {
+                selectedStoryId = tabs[selectedTabIndex + 1].story.id
+            }
         } else {
             shouldDismiss = true
         }

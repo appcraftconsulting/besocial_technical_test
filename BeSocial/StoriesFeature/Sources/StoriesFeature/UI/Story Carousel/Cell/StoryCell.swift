@@ -5,6 +5,8 @@
 //  Created by François Boulais on 09/03/2025.
 //
 
+import Nuke
+import NukeUI
 import SwiftUI
 
 struct StoryCell: View {
@@ -16,10 +18,14 @@ struct StoryCell: View {
     
     var body: some View {
         VStack(alignment: .center, spacing: 6) {
-            AsyncImage(url: viewModel.authorProfilePictureURL) { image in
-                image.resizable()
-            } placeholder: {
-                Color.purple
+            LazyImage(url: viewModel.authorProfilePictureURL) { state in
+                if let image = state.image {
+                    image.resizable().aspectRatio(contentMode: .fill)
+                } else if state.error != nil {
+                    Color.red
+                } else {
+                    Color.blue
+                }
             }
             .clipShape(.circle)
             .aspectRatio(1, contentMode: .fit)

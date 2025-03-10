@@ -5,6 +5,7 @@
 //  Created by François Boulais on 09/03/2025.
 //
 
+import NukeUI
 import SwiftUI
 
 struct StoriesCarouselFullScreen: View {
@@ -35,14 +36,26 @@ struct StoriesCarouselFullScreen: View {
                     }
                     .progressViewStyle(.linear)
                     
-                    HStack(alignment: .center) {
+                    HStack(alignment: .center, spacing: 12) {
+                        LazyImage(url: tab.story.authorProfilePictureURL) { state in
+                            if let image = state.image {
+                                image.resizable().aspectRatio(contentMode: .fill)
+                            } else if state.error != nil {
+                                Color.red
+                            } else {
+                                Color.blue
+                            }
+                        }
+                        .frame(width: 36, height: 36)
+                        .clipShape(.circle)
+                        
                         VStack(alignment: .leading) {
                             Text(tab.story.authorDisplayName)
                                 .font(.headline)
                             
                             Text(tab.story.pages[tab.pageIndex].createdAt, style: .relative)
                                 .font(.caption)
-                                .foregroundStyle(.white.opacity(0.5))
+                                .foregroundStyle(.white.opacity(0.75))
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         
@@ -85,7 +98,7 @@ struct StoriesCarouselFullScreen: View {
                 .tag(tab.story.id)
             }
         }
-        .tabViewStyle(.page)
+        .tabViewStyle(.page(indexDisplayMode: .never))
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.black)
         .onChange(of: viewModel.shouldDismiss) { _ in
