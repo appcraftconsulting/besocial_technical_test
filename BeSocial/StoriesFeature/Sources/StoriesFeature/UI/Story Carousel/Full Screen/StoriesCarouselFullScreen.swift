@@ -16,21 +16,17 @@ struct StoriesCarouselFullScreen: View {
     }
     
     var body: some View {
-        Group {
-            switch viewModel.content {
-            case .loader:
-                ProgressView()
-                    .controlSize(.large)
-                    .tint(.white)
-            case let .story(story, pageIndex):
+        TabView(selection: $viewModel.selectedStoryId) {
+            ForEach(viewModel.tabs) { tab in
+                let isTabSelected = viewModel.selectedStoryId == tab.story.id
                 VStack(spacing: 8) {
                     HStack(spacing: 8) {
-                        ForEach(story.pages.indices, id: \.self) { index in
-                            if index == pageIndex {
+                        ForEach(tab.story.pages.indices, id: \.self) { index in
+                            if isTabSelected && index == tab.pageIndex {
                                 TimelineView(.animation) { _ in
                                     ProgressView(value: viewModel.currentPageProgress)
                                 }
-                            } else if index < pageIndex {
+                            } else if index < tab.pageIndex {
                                 ProgressView(value: 1)
                             } else {
                                 ProgressView(value: 0)
@@ -41,10 +37,10 @@ struct StoriesCarouselFullScreen: View {
                     
                     HStack(alignment: .center) {
                         VStack(alignment: .leading) {
-                            Text(story.authorDisplayName)
+                            Text(tab.story.authorDisplayName)
                                 .font(.headline)
                             
-                            Text(story.pages[pageIndex].createdAt, style: .relative)
+                            Text(tab.story.pages[tab.pageIndex].createdAt, style: .relative)
                                 .font(.caption)
                                 .foregroundStyle(.white.opacity(0.5))
                         }
@@ -68,7 +64,7 @@ struct StoriesCarouselFullScreen: View {
                 .frame(maxHeight: .infinity, alignment: .top)
                 .background {
                     GeometryReader { proxy in
-                        AsyncImage(url: story.pages[pageIndex].contentURL) { image in
+                        AsyncImage(url: tab.story.pages[tab.pageIndex].contentURL) { image in
                             image.resizable()
                                 .aspectRatio(contentMode: .fill)
                         } placeholder: {
@@ -85,10 +81,12 @@ struct StoriesCarouselFullScreen: View {
                     }
                     .ignoresSafeArea()
                 }
+                .clipShape(.rect(cornerRadius: 16, style: .continuous))
+                .tag(tab.story.id)
             }
         }
+        .tabViewStyle(.page)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .clipShape(.rect(cornerRadius: 16, style: .continuous))
         .background(.black)
         .onChange(of: viewModel.shouldDismiss) { _ in
             dismiss()

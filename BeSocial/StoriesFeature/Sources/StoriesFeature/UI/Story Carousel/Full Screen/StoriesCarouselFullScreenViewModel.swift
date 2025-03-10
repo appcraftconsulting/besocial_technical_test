@@ -10,17 +10,29 @@ import BeSocialEntity
 import UIKit
 
 class StoriesCarouselFullScreenViewModel: ObservableObject {
-    @Published internal var content: Content = .loader
+    struct CarouselTab: Identifiable {
+        let story: Story
+        var pageIndex: Int
+        
+        // MARK: - Identifiable
+        
+        var id: String {
+            story.id
+        }
+    }
+    
+    @Published internal var tabs = [CarouselTab]()
+    @Published internal var selectedStoryId: String? {
+        didSet {
+            scheduleNextPageTimer()
+        }
+    }
+    
     @Published internal var shouldDismiss = false
     @Published internal var seenStoriesPagesIds = [String]()
     
     @Published internal var nextPageTimer: Timer?
-    
-    enum Content {
-        case loader
-        case story(Story, pageIndex: Int)
-    }
-    
+
     private let userDefaults: UserDefaults = .standard
     private let stories: [Story]
     private let pageDuration: TimeInterval = 5
@@ -31,9 +43,8 @@ class StoriesCarouselFullScreenViewModel: ObservableObject {
         userDefaults.publisher(for: \.seenStoriesPagesIds)
             .assign(to: &$seenStoriesPagesIds)
         
-        if let story {
-            showStory(story)
-        }
+        tabs = stories.map { .init(story: $0, pageIndex: 0) }
+        selectedStoryId = story?.id ?? stories.first?.id
     }
     
     internal var currentPageProgress: Double {
@@ -47,51 +58,53 @@ class StoriesCarouselFullScreenViewModel: ObservableObject {
     // MARK: - Internal functions
     
     internal func previousStory() {
-        if case let .story(story, _) = content,
-           let index = stories.firstIndex(where: { $0.id == story.id }),
-           stories.indices.contains(index - 1) {
-            showStory(stories[index - 1])
+        if let selectedTabIndex = tabs.firstIndex(where: { $0.story.id == selectedStoryId }),
+           tabs.indices.contains(selectedTabIndex - 1) {
+            selectedStoryId = tabs[selectedTabIndex - 1].story.id
         } else {
             shouldDismiss = true
         }
     }
     
     internal func nextStory() {
-        if case let .story(story, _) = content,
-           let index = stories.firstIndex(where: { $0.id == story.id }),
-           stories.indices.contains(index + 1) {
-            showStory(stories[index + 1])
+        if let selectedTabIndex = tabs.firstIndex(where: { $0.story.id == selectedStoryId }),
+           tabs.indices.contains(selectedTabIndex + 1) {
+            selectedStoryId = tabs[selectedTabIndex + 1].story.id
         } else {
             shouldDismiss = true
         }
     }
     
     internal func previousPage() {
-        guard case let .story(story, pageIndex) = content else {
+        guard let selectedTabIndex = tabs.firstIndex(where: { $0.story.id == selectedStoryId }) else {
             return
         }
         
-        if story.pages.indices.contains(pageIndex - 1) {
-            content = .story(story, pageIndex: pageIndex - 1)
+        let selectedTab = tabs[selectedTabIndex]
+        
+        if selectedTab.story.pages.indices.contains(selectedTab.pageIndex - 1) {
+            tabs[selectedTabIndex].pageIndex = selectedTab.pageIndex - 1
+            scheduleNextPageTimer()
         } else {
             previousStory()
         }
     }
     
     internal func nextPage() {
-        guard case let .story(story, pageIndex) = content else {
+        guard let selectedTabIndex = tabs.firstIndex(where: { $0.story.id == selectedStoryId }) else {
             return
         }
-        
-        userDefaults.seenStoriesPagesIds.append(story.pages[pageIndex].id)
-        
-        if story.pages.indices.contains(pageIndex + 1) {
-            content = .story(story, pageIndex: pageIndex + 1)
+
+        let selectedTab = tabs[selectedTabIndex]
+        let seenStoryPageId = selectedTab.story.pages[selectedTab.pageIndex].id
+        userDefaults.seenStoriesPagesIds.append(seenStoryPageId)
+
+        if selectedTab.story.pages.indices.contains(selectedTab.pageIndex + 1) {
+            tabs[selectedTabIndex].pageIndex = selectedTab.pageIndex + 1
+            scheduleNextPageTimer()
         } else {
             nextStory()
         }
-        
-        scheduleNextPageTimer()
     }
     
     internal func close() {
@@ -100,19 +113,19 @@ class StoriesCarouselFullScreenViewModel: ObservableObject {
     
     // MARK: - Private functions
     
-    private func showStory(_ story: Story) {
-        let unseenPagesIds = story.pages.map(\.id)
-            .filter { !seenStoriesPagesIds.contains($0) }
-        
-        if let firstUnseenPageId = unseenPagesIds.first,
-           let firstUnseenIndex = story.pages.firstIndex(where: { $0.id == firstUnseenPageId }) {
-            content = .story(story, pageIndex: firstUnseenIndex)
-        } else if let firstIndex = story.pages.indices.first {
-            content = .story(story, pageIndex: firstIndex)
-        }
-        
-        scheduleNextPageTimer()
-    }
+//    private func showStory(_ story: Story) {
+//        let unseenPagesIds = story.pages.map(\.id)
+//            .filter { !seenStoriesPagesIds.contains($0) }
+//        
+//        if let firstUnseenPageId = unseenPagesIds.first,
+//           let firstUnseenIndex = story.pages.firstIndex(where: { $0.id == firstUnseenPageId }) {
+//            select = .init(storyId: story.id, pageIndex: firstUnseenIndex)
+//        } else if let firstIndex = story.pages.indices.first {
+//            selectedContent = .init(storyId: story.id, pageIndex: firstIndex)
+//        }
+//        
+//        scheduleNextPageTimer()
+//    }
     
     private func scheduleNextPageTimer() {
         nextPageTimer?.invalidate()
