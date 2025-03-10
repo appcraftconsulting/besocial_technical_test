@@ -45,14 +45,15 @@ public struct StoriesCarouselBanner: View {
                     .frame(width: 72)
                 }
             }
-            .padding(16)
+            .padding([.horizontal, .bottom], 16)
+            .padding(.top, 8)
             .background(.background)
-            .animation(.default, value: viewModel.cells)
             .onAppear {
                 viewModel.fetchStories()
             }
         }
         .scrollIndicators(.hidden)
+        .animation(.easeIn(duration: 0.2), value: viewModel.cells)
         .fullScreenCover(item: $selectedStory) { story in
             StoriesCarouselFullScreen(viewModel: StoriesCarouselFullScreenViewModel(
                 stories: viewModel.retrieveStories(),

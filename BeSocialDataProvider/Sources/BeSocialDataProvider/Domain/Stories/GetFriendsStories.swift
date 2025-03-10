@@ -92,7 +92,7 @@ extension GetFriendsStories {
                 "https://res-3.cloudinary.com/jnto/image/upload/w_750,h_750,c_fill,f_auto,fl_lossy,q_auto/v1/media/filer_public/9f/cf/9fcfe145-b878-4933-bb32-10b2acf89a96/okinawa1986_3__ile_de_kume_ovek5d"
             ]
             
-            let allDisplayNames = ["Neo", "Trinity", "Morpheus", "Smith", "Oracle", "Cypher", "Niobe", "Dozer", "Switch", "Tank", "Seraph", "Sati", "Merovingian", "Persephone", "Ghost", "Lock", "Rama", "Bane", "The Keymaker", "Commander Thadeus", "Kid", "Zee", "Mifune", "Roland", "Cas", "Colt", "Vector", "Sequoia", "Sentinel", "Turing"]
+            let allDisplayNames = ["Emma", "Liam", "Olivia", "Noah", "Ava", "Ethan", "Sophia", "Mason", "Isabella", "Lucas", "Mia", "Jackson", "Charlotte", "Aiden", "Amelia", "Elijah", "Harper", "Grayson", "Evelyn", "James", "Abigail", "Benjamin", "Emily", "Henry", "Scarlett", "Alexander", "Madison", "Daniel", "Chloe", "William"]
             
             return allDisplayNames.enumerated().map { (storyIndex, displayName) in
                 let numberOfPages: Int = .random(in: 1..<4)
